@@ -42,7 +42,7 @@ export default function NewProposal() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:8000/improvement/create", {
+      const response = await fetch("https://civiconnect-miii.onrender.com/improvement/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

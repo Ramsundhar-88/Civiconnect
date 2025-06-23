@@ -12,7 +12,7 @@ export default function DiscussionDetail() {
 
   const fetchDiscussion = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/discussion/${id}`);
+      const res = await fetch(`https://civiconnect-miii.onrender.com/discussion/${id}`);
       const data = await res.json();
       setDiscussion(data);
     } catch (err) {
@@ -22,7 +22,7 @@ export default function DiscussionDetail() {
 
   const fetchComments = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/comment/${id}`);
+      const res = await fetch(`https://civiconnect-miii.onrender.com/comment/${id}`);
       const data = await res.json();
       setComments(data);
     } catch (err) {
@@ -32,7 +32,7 @@ export default function DiscussionDetail() {
 
   const handleCommentSubmit = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/comment/${id}`, {
+      const res = await fetch(`https://civiconnect-miii.onrender.com/comment/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

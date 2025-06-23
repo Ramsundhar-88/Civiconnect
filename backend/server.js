@@ -9,10 +9,24 @@ const app = express();
 
 app.use(cookieParser());
 // === CORS ===
+
+
+const allowedOrigins = [
+  'http://localhost:5173',                      // local dev frontend
+  'https://civiconnect-psi.vercel.app'         // deployed Vercel frontend
+];
+
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
 }));
+
 
 // === Middleware ===
 app.use(express.json({ limit: '10mb' }));
