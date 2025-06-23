@@ -13,18 +13,18 @@ export default function CommunityHubStandalone() {
   const [trending, setTrending] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/discussion/all")
+    fetch("https://civiconnect-psi.vercel.app/discussion/all")
       .then(res => res.json())
       .then(data => setDiscussions(data));
 
-    fetch("http://localhost:8000/improvement/improvements")
+    fetch("https://civiconnect-psi.vercel.app/improvement/improvements")
       .then(res => res.json())
       .then(data => setTrending(data));
   }, []);
 
   const handleVote = async (id) => {
   try {
-    const res = await fetch(`http://localhost:8000/improvement/${id}/vote`, {
+    const res = await fetch(`https://civiconnect-psi.vercel.app/improvement/${id}/vote`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export default function CommunityHubStandalone() {
     if (!res.ok) throw new Error("Voting failed");
 
     // ✅ Refresh trending proposals
-    const updatedRes = await fetch("http://localhost:8000/improvement/improvements");
+    const updatedRes = await fetch("https://civiconnect-psi.vercel.app/improvement/improvements");
     const updatedData = await updatedRes.json();
     setTrending(updatedData);
   } catch (error) {
