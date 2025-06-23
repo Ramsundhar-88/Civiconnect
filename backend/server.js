@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://civiconnect-pink.vercel.app/', // production frontenddd
+  'https://civiconnect-pink.vercel.app', // production frontenddd
   'https://civiconnect-4jeo2sodr-ramsundhar-88s-projects.vercel.app' // Vercel preview
 ];
 
