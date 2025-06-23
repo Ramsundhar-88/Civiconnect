@@ -8,7 +8,7 @@ export default function ImprovementsList() {
 
   const fetchProposals = async () => {
     try {
-      const res = await fetch("https://https://civiconnect-miii.onrender.com/improvement/improvements");
+      const res = await fetch("https://civiconnect-miii.onrender.com/improvement/improvements");
       const data = await res.json();
       setProposals(data);
     } catch (err) {
@@ -34,7 +34,7 @@ export default function ImprovementsList() {
   }
 
   try {
- const res = await fetch(`https://https://civiconnect-miii.onrender.com/improvement/${id}/vote`, {
+ const res = await fetch(`https://civiconnect-miii.onrender.com/improvement/${id}/vote`, {
   method: "PATCH",
   headers: {
     "Content-Type": "application/json",

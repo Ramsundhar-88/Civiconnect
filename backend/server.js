@@ -1,19 +1,20 @@
 require('dotenv').config({ path: './config/.env' });
 
 const express = require('express');
-const cors = require('cors');
+
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 app.use(cookieParser());
 // === CORS ===
 
-
 const allowedOrigins = [
-  'http://localhost:5173',                      // local dev frontend
-  'https://https://civiconnect-miii.onrender.com'         // deployed Vercel frontend
+  'http://localhost:5173',
+  'https://civiconnect-psi.vercel.app', // production frontend
+  'https://civiconnect-4jeo2sodr-ramsundhar-88s-projects.vercel.app' // Vercel preview
 ];
 
 app.use(cors({
@@ -21,7 +22,7 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('CORS blocked: ' + origin));
     }
   },
   credentials: true

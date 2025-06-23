@@ -12,7 +12,7 @@ const AllDiscussions = () => {
   useEffect(() => {
     const fetchDiscussions = async () => {
       try {
-        const res = await axios.get("https://https://civiconnect-miii.onrender.com/discussion/all");
+        const res = await axios.get("https://civiconnect-miii.onrender.com/discussion/all");
         setDiscussions(res.data);
         setLoading(false);
       } catch (err) {

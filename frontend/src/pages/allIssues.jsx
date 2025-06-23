@@ -14,7 +14,7 @@ export default function Issues() {
   useEffect(() => {
     const fetchIssues = async () => {
       try {
-        const res = await axios.get("https://https://civiconnect-miii.onrender.com/issue/all", {
+        const res = await axios.get("https://civiconnect-miii.onrender.com/issue/all", {
           withCredentials: true, // If your backend uses cookies/auth
         });
         setIssues(res.data);
@@ -103,7 +103,7 @@ export default function Issues() {
                 className="bg-white rounded-lg shadow p-4 border"
               >
             <img
-              src={issue.image ? `https://https://civiconnect-miii.onrender.com${issue.image}` : "/placeholder.jpg"}
+              src={issue.image ? `https://civiconnect-miii.onrender.com${issue.image}` : "/placeholder.jpg"}
               alt={issue.title}
               className="w-full h-40 object-cover rounded mb-3"
               onError={(e) => (e.target.src = "/placeholder.jpg")}
