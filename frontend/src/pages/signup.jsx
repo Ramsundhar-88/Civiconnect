@@ -51,7 +51,7 @@ export default function Signup() {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:8000/user/register", {
+      const res = await fetch("https://civiconnect-psi.vercel.app/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

@@ -21,7 +21,7 @@ export default function Profile() {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/user/profile/${email}`,
+          `https://civiconnect-psi.vercel.app/user/profile/${email}`,
           { withCredentials: true }
         );
         setUser(res.data);

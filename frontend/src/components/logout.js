@@ -7,7 +7,7 @@ const useLogout = () => {
 
   const logout = async () => {
     try {
-      await axios.get("http://localhost:8000/user/logout", {
+      await axios.get("https://civiconnect-psi.vercel.app/user/logout", {
         withCredentials: true,
       });
 
