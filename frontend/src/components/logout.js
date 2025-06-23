@@ -7,7 +7,8 @@ const useLogout = () => {
 
   const logout = async () => {
     try {
-      await axios.get("http://localhost:8000/user/logout", {
+      await axios.get("https://civiconnect-miii.onrender.com
+/user/logout", {
         withCredentials: true,
       });
 
