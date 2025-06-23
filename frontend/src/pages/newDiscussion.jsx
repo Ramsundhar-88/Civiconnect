@@ -21,7 +21,7 @@ export default function NewDiscussion() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://civiconnect-miii.onrender.com/discussion/create", {
+      const res = await fetch("http://localhost:8000/discussion/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
