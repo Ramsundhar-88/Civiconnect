@@ -69,7 +69,7 @@ const IssueReportForm = () => {
       formData.append("image", image); // the actual file
       formData.append("location", location); // optional if needed on backend
 
-      await axios.post("https://civiconnect-psi.vercel.app/issue/create", formData, {
+      await axios.post("https://https://civiconnect-miii.onrender.com/issue/create", formData, {
         withCredentials: true, // important for cookies if auth is used
       });
 
