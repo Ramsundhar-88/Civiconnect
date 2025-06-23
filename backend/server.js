@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:5173',                      // local dev frontend
-  'https://civiconnect-psi.vercel.app'         // deployed Vercel frontend
+  'https://https://civiconnect-miii.onrender.com'         // deployed Vercel frontend
 ];
 
 app.use(cors({

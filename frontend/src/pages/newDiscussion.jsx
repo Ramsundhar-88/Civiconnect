@@ -21,7 +21,7 @@ export default function NewDiscussion() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("https://civiconnect-psi.vercel.app/discussion/create", {
+      const res = await fetch("https://https://civiconnect-miii.onrender.com/discussion/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
