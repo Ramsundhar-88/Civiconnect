@@ -15,7 +15,7 @@ const Footer = () => {
                 <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 1118 0z" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
-              <span className="font-semibold">Better Place</span>
+              <span className="font-semibold">CiviConnect</span>
             </a>
             <p className="text-gray-600 text-sm">
               Empowering citizens to improve their communities through transparent reporting and accountable governance.
@@ -78,8 +78,8 @@ const Footer = () => {
             <div className="mt-4">
               <p className="text-gray-600 text-sm">
                 Contact us at:{" "}
-                <a href="mailto:contact@betterplace.org" className="hover:text-blue-600">
-                  contact@betterplace.org
+                <a href="mailto:contact@CiviConnnect.org" className="hover:text-blue-600">
+                  contact@CiviConnnect.org
                 </a>
               </p>
             </div>
@@ -89,7 +89,7 @@ const Footer = () => {
         {/* Bottom text */}
         <div className="mt-8 pt-8 border-t border-gray-300">
           <p className="text-center text-gray-600 text-sm">
-            &copy; {currentYear} Better Place. All rights reserved.
+            &copy; {currentYear}CiviConnect. All rights reserved.
           </p>
         </div>
       </div>
