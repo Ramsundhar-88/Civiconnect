@@ -1,10 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import React from "react";
-import {
-  ArrowRight, CheckCircle, MapPin, BarChart2, ContactRound,
-  MessageSquare, ShieldCheck, FileText, Users, Github, Twitter, Facebook, Instagram,
-  Phone, Mail, Menu, X, Star, TrendingUp, Clock, Award
-} from "lucide-react";
+
 import AllDiscussion from "./allDiscussion"
 import Issues from "./allIssues"
 import Community from "./community"
@@ -12,10 +8,20 @@ import DiscussionDetail from "./discussionDetail"
 import ImprovementList from "./improvementList"
 import Login from "./Login"
 import NewDiscussion from "./newDiscussion"
-import Report from "./newIssue"
+import Report from "./newIssue"     
 import NewProposal from "./newProposal"
 import Profile from "./profile"
 import Signup from "./signup"
+
+import {
+  ArrowRight, CheckCircle, MapPin, BarChart2, ContactRound,
+  MessageSquare, ShieldCheck, FileText, Users, Github, Twitter, Facebook, Instagram,
+  Phone, Mail, Menu, X, Star, TrendingUp, Clock, Award
+} from "lucide-react";
+
+import { NavLink } from "react-router-dom";
+
+
 
 
 const Index = () => {
@@ -44,9 +50,7 @@ const Index = () => {
     };
   }, []);
 
-  const NavLink = ({ href, children, className = "", onClick }) => (
-    <a href={href} className={className} onClick={onClick}>{children}</a>
-  );
+  
 
   return (
     <div>
@@ -93,19 +97,20 @@ const Index = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-gray-700">
-            <NavLink href="/Issues" className="hover:text-blue-600 transition-colors font-medium">Issues</NavLink>
-            <NavLink href="/Community" className="hover:text-blue-600 transition-colors font-medium">Community</NavLink>
-            <NavLink href="/Report" className="hover:text-blue-600 transition-colors font-medium">Report</NavLink>
-            <NavLink href="/Profile" className="hover:text-blue-600 transition-colors font-medium">Profile</NavLink>
-            
+            <NavLink to="/issues" className="hover:text-blue-600 transition-colors font-medium">Issues</NavLink>
+            <NavLink to="/community" className="hover:text-blue-600 transition-colors font-medium">Community</NavLink>
+            <NavLink to="/newissue" className="hover:text-blue-600 transition-colors font-medium">Report</NavLink>
+            <NavLink to="/profile" className="hover:text-blue-600 transition-colors font-medium">Profile</NavLink>
+
             {!loggedIn && (
               <>
-                <NavLink href="/Login" className="hover:text-blue-600 transition-colors font-medium">Login</NavLink>
-                <NavLink href="/Signup" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all transform hover:scale-105">
+                <NavLink to="/login" className="hover:text-blue-600 transition-colors font-medium">Login</NavLink>
+                <NavLink to="/signup" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all transform hover:scale-105">
                   Sign Up
                 </NavLink>
               </>
             )}
+
           </nav>
 
           {/* Mobile Menu Button */}
@@ -161,12 +166,14 @@ const Index = () => {
           </p>
           
           <div className="flex justify-center flex-wrap gap-4 mb-8">
-            <NavLink href="/report" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-105 flex items-center text-lg font-medium">
+            <NavLink to="/newissue" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-105 flex items-center text-lg font-medium">
               Report an Issue <ArrowRight className="ml-2 w-5 h-5" />
             </NavLink>
-            <NavLink href="/Issues" className="glass-effect text-blue-600 px-8 py-4 rounded-full hover:bg-white/20 transition-all flex items-center text-lg font-medium border border-blue-200">
+
+            <NavLink to="/issues" className="glass-effect text-blue-600 px-8 py-4 rounded-full hover:bg-white/20 transition-all flex items-center text-lg font-medium border border-blue-200">
               Browse Issues
             </NavLink>
+
           </div>
 
           {/* Quick Stats */}
@@ -330,12 +337,13 @@ const Index = () => {
           </p>
           
           <div className="flex justify-center gap-6 flex-wrap mb-8">
-            <NavLink href="/Signup" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-105 text-lg font-medium">
+            <NavLink to="/signup" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-105 text-lg font-medium">
               Get Started Free
             </NavLink>
-            <NavLink href="/Issues" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full hover:bg-blue-50 transition-all text-lg font-medium">
+            <NavLink to="/issues" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full hover:bg-blue-50 transition-all text-lg font-medium">
               Explore Platform
             </NavLink>
+
           </div>
           
           <div className="flex justify-center items-center space-x-6 text-sm text-gray-500">
