@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Bell, User, Search } from "lucide-react";
+import Signup from './pages/signup';
+import Login from './pages/Login';
+import NewIssue from './pages/newIssue';
+import AllIssues from './pages/allIssues';
+import NewDiscussion from './pages/newDiscussion';
+import AllDiscussions from './pages/allDiscussion';
+import Home from "./pages/home";
+import CommunityPage from './pages/community';
+import NewProposal from './pages/newProposal';
+import UserProfile from './pages/profile';
+import ImprovementsList from './pages/improvementList';
+import DiscussionDetail from './pages/discussionDetail';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
