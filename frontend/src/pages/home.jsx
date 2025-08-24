@@ -1,10 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import React from "react";
-import {
-  ArrowRight, CheckCircle, MapPin, BarChart2, ContactRound,
-  MessageSquare, ShieldCheck, FileText, Users, Github, Twitter, Facebook, Instagram,
-  Phone, Mail, Menu, X, Star, TrendingUp, Clock, Award
-} from "lucide-react";
+
 import AllDiscussion from "./allDiscussion"
 import Issues from "./allIssues"
 import Community from "./community"
@@ -12,10 +8,20 @@ import DiscussionDetail from "./discussionDetail"
 import ImprovementList from "./improvementList"
 import Login from "./Login"
 import NewDiscussion from "./newDiscussion"
-import Report from "./newIssue"
+import Report from "./newIssue"     
 import NewProposal from "./newProposal"
 import Profile from "./profile"
 import Signup from "./signup"
+
+import {
+  ArrowRight, CheckCircle, MapPin, BarChart2, ContactRound,
+  MessageSquare, ShieldCheck, FileText, Users, Github, Twitter, Facebook, Instagram,
+  Phone, Mail, Menu, X, Star, TrendingUp, Clock, Award
+} from "lucide-react";
+
+import { NavLink } from "react-router-dom";
+
+
 
 
 const Index = () => {
@@ -93,9 +99,9 @@ const Index = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 text-gray-700">
-            <NavLink href="/Issues" className="hover:text-blue-600 transition-colors font-medium">Issues</NavLink>
+            <NavLink href="/issues" className="hover:text-blue-600 transition-colors font-medium">Issues</NavLink>
             <NavLink href="/Community" className="hover:text-blue-600 transition-colors font-medium">Community</NavLink>
-            <NavLink href="/Report" className="hover:text-blue-600 transition-colors font-medium">Report</NavLink>
+            <NavLink href="/NewIssue" className="hover:text-blue-600 transition-colors font-medium">Report</NavLink>
             <NavLink href="/Profile" className="hover:text-blue-600 transition-colors font-medium">Profile</NavLink>
             
             {!loggedIn && (
