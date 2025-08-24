@@ -12,6 +12,8 @@ import NewProposal from './pages/newProposal';
 import UserProfile from './pages/profile';
 import ImprovementsList from './pages/improvementList';
 import DiscussionDetail from './pages/discussionDetail';
+import { NavLink, Link } from "react-router-dom";
+
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,15 +36,7 @@ const Header = () => {
     setLoggedIn(false); // Default to not logged in for demo
   }, []);
 
-  const NavLink = ({ href, children, className = "", onClick, mobile = false }) => (
-    <a 
-      href={href} 
-      className={`${className} ${mobile ? 'block py-2 px-4' : ''}`} 
-      onClick={onClick}
-    >
-      {children}
-    </a>
-  );
+
 
   return (
     <>
@@ -97,7 +91,7 @@ const Header = () => {
             <nav className="hidden md:flex items-center space-x-8">
               <div className="flex items-center space-x-6">
                 <NavLink 
-                  href="/issues" 
+                  href="/Issues" 
                   className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
                 >
                   Browse Issues
@@ -105,7 +99,7 @@ const Header = () => {
                 </NavLink>
                 
                 <NavLink 
-                  href="/community" 
+                  href="/Community" 
                   className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
                 >
                   Community
@@ -166,13 +160,13 @@ const Header = () => {
                 ) : (
                   <>
                     <NavLink 
-                      href="/login" 
+                      href="/Login" 
                       className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
                     >
                       Login
                     </NavLink>
                     <NavLink 
-                      href="/signup" 
+                      href="/Signup" 
                       className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-200 transform hover:scale-105"
                     >
                       Sign Up
