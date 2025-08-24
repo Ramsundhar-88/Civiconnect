@@ -1,5 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Bell, User, Search } from "lucide-react";
+import Signup from './pages/signup';
+import Login from './pages/Login';
+import NewIssue from './pages/newIssue';
+import AllIssues from './pages/allIssues';
+import NewDiscussion from './pages/newDiscussion';
+import AllDiscussions from './pages/allDiscussion';
+import Home from "./pages/home";
+import CommunityPage from './pages/community';
+import NewProposal from './pages/newProposal';
+import UserProfile from './pages/profile';
+import ImprovementsList from './pages/improvementList';
+import DiscussionDetail from './pages/discussionDetail';
+
+import { NavLink, Link } from "react-router-dom";
+
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,15 +37,7 @@ const Header = () => {
     setLoggedIn(false); // Default to not logged in for demo
   }, []);
 
-  const NavLink = ({ href, children, className = "", onClick, mobile = false }) => (
-    <a 
-      href={href} 
-      className={`${className} ${mobile ? 'block py-2 px-4' : ''}`} 
-      onClick={onClick}
-    >
-      {children}
-    </a>
-  );
+
 
   return (
     <>
@@ -154,13 +161,13 @@ const Header = () => {
                 ) : (
                   <>
                     <NavLink 
-                      href="/login" 
+                      href="/Login" 
                       className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
                     >
                       Login
                     </NavLink>
                     <NavLink 
-                      href="/signup" 
+                      href="/Signup" 
                       className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-200 transform hover:scale-105"
                     >
                       Sign Up
