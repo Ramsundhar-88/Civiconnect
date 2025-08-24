@@ -7,52 +7,65 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("citizen"); // Default to lowercase for consistency
+  const [role, setRole] = useState("citizen");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  try {
-    const res = await fetch("https://civiconnect-miii.onrender.com/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ email, password, role }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) throw new Error(data.message || "Login failed");
-
-    console.log("Login successful! User data:", data);
-
-    // ✅ Store token and userId for voting and authentication
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("userId", data.user.userId);
-
-    // ✅ Optionally store entire user object
-    localStorage.setItem("user", JSON.stringify(data.user));
-
-    alert("Login successful");
-
-    // ✅ Redirect based on role
-    if (role === "official") {
-      navigate("/official/dashboard");
-    } else if (role === "moderator") {
-      navigate("/moderator");
-    } else {
-      navigate("/");
+  /** Validate fields before submit */
+  const validateFields = () => {
+    const newErrors = {};
+    if (!email) {
+      newErrors.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email address.";
     }
+    if (!password) {
+      newErrors.password = "Password is required.";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters long.";
+    }
+    return newErrors;
+  };
 
-  } catch (err) {
-    alert(err.message);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const fieldErrors = validateFields();
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
+      return;
+    }
+    setErrors({});
+    setIsSubmitting(true);
 
+    try {
+      const res = await fetch("https://civiconnect-miii.onrender.com/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ email, password, role }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Login failed");
+
+      // Store auth details
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.user.userId);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      alert("Login successful!");
+
+      // Redirect by role
+      if (role === "official") navigate("/official/dashboard");
+      else if (role === "moderator") navigate("/moderator");
+      else navigate("/");
+
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -65,6 +78,7 @@ const handleSubmit = async (e) => {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Email */}
             <div>
               <label className="block text-sm font-medium mb-1">Email</label>
               <input
@@ -72,11 +86,14 @@ const handleSubmit = async (e) => {
                 placeholder="your.email@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-400"
-                required
+                className={`w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-400 ${
+                  errors.email ? "border-red-500" : "border-gray-300"
+                }`}
               />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
 
+            {/* Password */}
             <div>
               <label className="block text-sm font-medium mb-1">Password</label>
               <input
@@ -84,11 +101,14 @@ const handleSubmit = async (e) => {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-400"
-                required
+                className={`w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-400 ${
+                  errors.password ? "border-red-500" : "border-gray-300"
+                }`}
               />
+              {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
             </div>
 
+            {/* Role */}
             <div>
               <label className="block text-sm font-medium mb-1">Role</label>
               <select
@@ -107,6 +127,7 @@ const handleSubmit = async (e) => {
               </p>
             </div>
 
+            {/* Submit */}
             <button
               type="submit"
               className="w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700 transition"
@@ -116,6 +137,7 @@ const handleSubmit = async (e) => {
             </button>
           </form>
 
+          {/* Signup Link */}
           <div className="text-center text-sm text-gray-500 mt-6">
             Don't have an account?{" "}
             <a href="/signup" className="text-blue-600 hover:underline">
