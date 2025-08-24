@@ -12,6 +12,7 @@ import NewProposal from './pages/newProposal';
 import UserProfile from './pages/profile';
 import ImprovementsList from './pages/improvementList';
 import DiscussionDetail from './pages/discussionDetail';
+
 import { NavLink, Link } from "react-router-dom";
 
 
@@ -91,7 +92,7 @@ const Header = () => {
             <nav className="hidden md:flex items-center space-x-8">
               <div className="flex items-center space-x-6">
                 <NavLink 
-                  href="/Issues" 
+                  href="/issues" 
                   className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
                 >
                   Browse Issues
@@ -99,7 +100,7 @@ const Header = () => {
                 </NavLink>
                 
                 <NavLink 
-                  href="/Community" 
+                  href="/community" 
                   className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
                 >
                   Community
