@@ -1,17 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import React from "react";
 
-import AllDiscussion from "./allDiscussion"
-import Issues from "./allIssues"
-import Community from "./community"
-import DiscussionDetail from "./discussionDetail"
-import ImprovementList from "./improvementList"
-import Login from "./Login"
-import NewDiscussion from "./newDiscussion"
-import Report from "./newIssue"     
-import NewProposal from "./newProposal"
-import Profile from "./profile"
-import Signup from "./signup"
+
 
 import {
   ArrowRight, CheckCircle, MapPin, BarChart2, ContactRound,
@@ -99,7 +89,7 @@ const Index = () => {
           <nav className="hidden md:flex space-x-6 text-gray-700">
             <NavLink to="/issues" className="hover:text-blue-600 transition-colors font-medium">Issues</NavLink>
             <NavLink to="/community" className="hover:text-blue-600 transition-colors font-medium">Community</NavLink>
-            <NavLink to="/newissue" className="hover:text-blue-600 transition-colors font-medium">Report</NavLink>
+            <NavLink to="/report" className="hover:text-blue-600 transition-colors font-medium">Report</NavLink>
             <NavLink to="/profile" className="hover:text-blue-600 transition-colors font-medium">Profile</NavLink>
 
             {!loggedIn && (
@@ -126,14 +116,14 @@ const Index = () => {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200 py-4">
             <nav className="flex flex-col space-y-3 px-4">
-              <NavLink href="Issues" className="text-gray-700 hover:text-blue-600 py-2">Issues</NavLink>
-              <NavLink href="/Community" className="text-gray-700 hover:text-blue-600 py-2">Community</NavLink>
+              <NavLink href="/issues" className="text-gray-700 hover:text-blue-600 py-2">Issues</NavLink>
+              <NavLink href="/community" className="text-gray-700 hover:text-blue-600 py-2">Community</NavLink>
               <NavLink href="/report" className="text-gray-700 hover:text-blue-600 py-2">Report</NavLink>
-              <NavLink href="/Profile" className="text-gray-700 hover:text-blue-600 py-2">Profile</NavLink>
+              <NavLink href="/profile" className="text-gray-700 hover:text-blue-600 py-2">Profile</NavLink>
               {!loggedIn && (
                 <>
-                  <NavLink href="/Login" className="text-gray-700 hover:text-blue-600 py-2">Login</NavLink>
-                  <NavLink href="/Signup" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center">Sign Up</NavLink>
+                  <NavLink href="/login" className="text-gray-700 hover:text-blue-600 py-2">Login</NavLink>
+                  <NavLink href="/signup" className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center">Sign Up</NavLink>
                 </>
               )}
             </nav>
@@ -166,7 +156,7 @@ const Index = () => {
           </p>
           
           <div className="flex justify-center flex-wrap gap-4 mb-8">
-            <NavLink to="/newissue" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-105 flex items-center text-lg font-medium">
+            <NavLink to="/report" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-105 flex items-center text-lg font-medium">
               Report an Issue <ArrowRight className="ml-2 w-5 h-5" />
             </NavLink>
 
